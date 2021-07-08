@@ -1,0 +1,128 @@
+{% extends "ProyectoJ/layout.html" %}
+{% block content %}
+
+
+{% if seccion_seleccionada %}
+<div class="alert alert-info" role="alert" style="font-size: 20px;text-align: center;">{{ seccion_seleccionada }}</div>
+{% else %}
+<div class="alert alert-info" role="alert" style="font-size: 20px;text-align: center;">Todos los Articulos</div>
+{% endif %}
+
+
+
+
+
+
+<!-- <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> -->
+<!-- <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> -->
+<!-- <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> -->
+
+<div style="width: 100%;height: 100%;background-image: url('/media/imagenes/yaguarete.jpg')">
+    
+    <div class="card-group" >
+        <div class="card" >
+          <img src="http://127.0.0.1:8000/media/imagenes/microondas_Fghd87g.jpg" class="card-img-top"  alt="...">
+          <div class="card-body">
+                  
+            <a href="http://127.0.0.1:8000/1" style="background-color: rgb(222, 228, 194);">Ver producto</a>
+          </div>
+        </div>
+        <div class="card" >
+            <img src="	http://127.0.0.1:8000/media/imagenes/aire_RWrGNtf.jpg" class="card-img-top"  style="width: 300px;" alt="...">
+            <div class="card-body">
+              
+              
+              <a href="http://127.0.0.1:8000/2" style="background-color: rgb(222, 228, 194);">Ver producto</a>
+            </div>
+          </div>
+          <div class="card" >
+            <img src="http://127.0.0.1:8000/media/imagenes/balanza__LUzPM25.jpg" class="card-img-top" style="width: 10em;margin: 5em 5em;" alt="...">
+            <div class="card-body">
+              
+              
+              <a href="http://127.0.0.1:8000/3" style="background-color: rgb(222, 228, 194);">Ver producto</a>
+            </div>
+          </div>
+      </div>
+    
+    
+    <ul>
+        {% for un_articulo in lista_articulos %}
+
+
+        <li>
+            <a href="{% url 'sitio:articulo' un_articulo.id %}" style="font-size: 1em;">{{un_articulo.id}} /
+                {% if perms.sitio.change_articulo %}</a>
+            <a href="{% url 'sitio:articulo_editar' un_articulo.id %}">Modificar</a> /
+            {% endif %}
+            {% if perms.sitio.delete_articulo %}
+            <a href="{% url 'sitio:articulo_eliminar' un_articulo.id %}">Eliminar</a>
+            {% endif %}
+            --- {{un_articulo}}
+        </li>
+
+
+        {% empty %}
+        <li>No hay articulos en ésta Sección.</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+<!-- ---------------------------------------------------- -->
+
+
+
+<!-- ------------------------------------------------------- -->
+
+<!-- {% if perms.sitio.add_articulo %}
+<a href="{% url 'sitio:articulo_alta'%}">Escribir un Articulo</a>
+<br>
+<br>
+<h3>Leer mas tarde</h3>
+<ul>
+    {% for articulo in leer_mas_tarde %}
+    <li>{{articulo}}</li>
+    {% empty %}
+    <li>No hay articulos para leer mas tarde.</li>
+    {% endfor %}
+</ul>
+{% endif %} -->
+{% endblock %}
+<!-- <footer style="background-color: rgb(29, 25, 20);height: 90px;">
+
+    <div>
+        <p style="color: white;float: left;padding-top: 20px;"><img src="/media/imagenes/logo.png" width="40px"
+                alt="logo">
+            JAGUARETE KAA S.A.</p>
+        <p style="color: white;padding-top: 20px;text-align: right;"> <span style="margin-right: 5em;">&copy
+                2021</span><br>Desarrollado por Adrian Roggiero</p>
+
+    </div>
+
+</footer> -->

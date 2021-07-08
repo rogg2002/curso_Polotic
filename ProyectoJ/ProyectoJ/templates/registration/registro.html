@@ -1,0 +1,23 @@
+{% extends "registration/layout.html" %}
+
+{% block content %}
+
+  <h2 style="text-align: center;">Registrate en JAGUARETE KAA</h2>
+  <form method="post" style="background: rgb(202, 197, 197);width: 60%;margin-left: 20%;">
+    {% csrf_token %}
+    {% for campo in form %}
+      <p>
+        {{ campo.label_tag }}<br>
+        {{ campo }}
+        {% if campo.help_text %}
+          <small style="color: rgb(7, 6, 6)">{{ campo.help_text }}</small>
+        {% endif %}
+        {% for error in campo.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit" style="text-align: center;color: firebrick;border-radius: 5px;margin-left: 40%;box-shadow: 0px 0px 10px red inset, 0px 0px 15px blue;">REGISTRARSE</button>
+  </form>
+  
+{% endblock %}
