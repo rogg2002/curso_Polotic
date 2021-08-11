@@ -9,8 +9,28 @@
 ">CARRITO</h2>
 <br><br><br>
 
+<p>Carrito de <span style="text-transform: uppercase; font-size: 1.2em;color: rgb(228, 228, 173);">{{ user.get_username }}</span></p>
+<ul>
+    {% for una_compra in lista_articulos %}
 
-     
+
+    <li>
+        <a href="{% url 'sitio:articulo' una_compra.id %}" style="font-size: 1em;color: white;">{{un_articulo.id}}  {{un_articulo.titulo}} ${{un_articulo.precio}}
+            {% if perms.sitio.change_articulo %}</a>
+        <a href="{% url 'sitio:articulo_editar' un_articulo.id %}">Modificar</a> /
+        {% endif %}
+        {% if perms.sitio.delete_articulo %}
+        <a href="{% url 'sitio:articulo_eliminar' un_articulo.id %}">Eliminar</a>
+        {% endif %}
+        
+    </li>
+
+
+    {% empty %}
+    <li>No hay articulos en ésta Sección.</li>
+    {% endfor %}
+</ul>
+
 
 </div>    
 

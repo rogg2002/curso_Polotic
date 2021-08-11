@@ -18,12 +18,19 @@ def index(request):
         "lista_secciones": Seccion.objects.all(),
         "leer_mas_tarde": request.session["leer_mas_tarde"],
     })
+def compra(request, articulo_id):
+    una_compra = get_object_or_404(Articulo, id=articulo_id)
+    return render(request, "ProyectoJ/articulo.html", {
+        "articulo": una_compra
+    })
+
 
 def articulo(request, articulo_id):
     un_articulo = get_object_or_404(Articulo, id=articulo_id)
     return render(request, "ProyectoJ/articulo.html", {
         "articulo": un_articulo
     })
+
 
 def articulo_alta(request):
     if request.method == "POST":

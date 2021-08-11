@@ -36,10 +36,15 @@
 
 
 
-
+                {% if not perms.sitio.add_articulo %}
+            
                 <a role="button" class="btn btn-outline-success btn-sm" href="{% url 'sitio:carrito' %}"><img
                         src="/media/imagenes/carrito.png" width="20px" alt="carrito"></a>
+                {% endif %}     
+
             </div>
+
+
             <h1>JAGUARETE KAA<img src="/media/imagenes/logo.png" width="100px" alt="logo">
             </h1>
         </header>

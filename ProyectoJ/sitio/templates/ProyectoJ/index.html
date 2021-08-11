@@ -10,18 +10,28 @@
 
 
 
+<ul>
+    {% for un_articulo in lista_articulos %}
+
+
+ 
+    <a href="{% url 'sitio:articulo' un_articulo.id %}" style="font-size: 1em;color: rgb(143, 101, 101);">{{un_articulo.titulo}}</a>
+        
+      
+        
+        
+   
+
+
+    {% empty %}
+    
+    {% endfor %}
+</ul>
 
 
 
-<!-- <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div> -->
+
+        
 <!-- <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
@@ -75,14 +85,14 @@
 
 
         <li>
-            <a href="{% url 'sitio:articulo' un_articulo.id %}" style="font-size: 1em;">{{un_articulo.id}} /
+            <a href="{% url 'sitio:articulo' un_articulo.id %}" style="font-size: 1em;color: white;">{{un_articulo.id}}  {{un_articulo.titulo}} ${{un_articulo.precio}}
                 {% if perms.sitio.change_articulo %}</a>
             <a href="{% url 'sitio:articulo_editar' un_articulo.id %}">Modificar</a> /
             {% endif %}
             {% if perms.sitio.delete_articulo %}
             <a href="{% url 'sitio:articulo_eliminar' un_articulo.id %}">Eliminar</a>
             {% endif %}
-            --- {{un_articulo}}
+            
         </li>
 
 
